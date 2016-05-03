@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/mediacontroller_bg"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
+    <ImageButton
+        android:id="@+id/mediacontroller_play_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:src="@drawable/mediacontroller_pause" />
+
+    <TextView
+        android:id="@+id/mediacontroller_time_current"
+        style="@style/MediaController_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/mediacontroller_play_pause" />
+
+
+    <SeekBar
+        android:id="@+id/mediacontroller_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="3dp"
+        android:minHeight="3dp"
+        android:thumb="@drawable/scrubber_control_selector_holo"
+        android:thumbOffset="0dp"
+        android:progressDrawable="@drawable/bg_seekbar_play"
+        android:focusable="true"
+        android:max="1000" />
+
+    <TextView
+        android:id="@+id/mediacontroller_time_total"
+        style="@style/MediaController_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp" />
+
+</LinearLayout>

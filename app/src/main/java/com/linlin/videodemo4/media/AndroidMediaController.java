@@ -1,0 +1,65 @@
+package com.linlin.videodemo4.media;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.util.AttributeSet;
+import android.view.View;
+
+import java.util.ArrayList;
+
+/**
+ * Created by lin on 2016/4/29.
+ */
+public class AndroidMediaController extends MediaController implements IMediaController{
+
+    private ActionBar mActionBar;
+
+    public AndroidMediaController(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public AndroidMediaController(Context context) {
+        super(context);
+    }
+
+
+    public void setSupportActionBar(@Nullable ActionBar actionBar) {
+        mActionBar = actionBar;
+        if (isShowing()) {
+            actionBar.show();
+        } else {
+            actionBar.hide();
+        }
+    }
+
+
+    @Override
+    public void show() {
+        super.show();
+        if (mActionBar != null)
+            mActionBar.show();
+    }
+
+    @Override
+    public void hide() {
+        super.hide();
+        if (mActionBar != null)
+            mActionBar.hide();
+        for (View view : mShowOnceArray)
+            view.setVisibility(View.GONE);
+        mShowOnceArray.clear();;
+    }
+
+    //----------
+    // Extends
+    //----------
+    private ArrayList<View> mShowOnceArray = new ArrayList<View>();
+
+    public void showOnce(@NonNull View view) {
+        mShowOnceArray.add(view);
+        view.setVisibility(View.VISIBLE);
+        show();
+    }
+}
